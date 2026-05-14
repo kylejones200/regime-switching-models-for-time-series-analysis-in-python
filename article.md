@@ -2,8 +2,7 @@
 
 We are looking for patterns in time series data across different time intervals. For example, stock market prices might show high...
 
-### **Regime Switching Models for Time Series Analysis in Python**
-We are looking for patterns in time series data across different time intervals. For example, stock market prices might show high volatility during crises and low volatility during stable periods. Regime switching models help identify this behavior by assuming that the time series switches between distinct "regimes," each governed by its own statistical properties.
+### Regime Switching Models for Time Series Analysis in PythonWe are looking for patterns in time series data across different time intervals. For example, stock market prices might show high volatility during crises and low volatility during stable periods. Regime switching models help identify this behavior by assuming that the time series switches between distinct "regimes," each governed by its own statistical properties.
 
 In this article, we'll explore regime switching models, their applications, and how to implement them in Python using the `statsmodels` library.
 
@@ -11,10 +10,10 @@ In this article, we'll explore regime switching models, their applications, and 
 ### What Are Regime Switching Models?
 Regime switching models, introduced by James Hamilton in 1989, capture structural changes in time series data by allowing transitions between different states or regimes. These models are particularly useful in:
 
-1.  [**Economics**: Modeling recessions and expansions.]
-2.  [**Finance**: Analyzing bull and bear markets.]
-3.  [**Energy**: Detecting shifts in demand or production trends.]
-4.  [**Weather**: Capturing transitions between climatic states.]
+1.  [Economics: Modeling recessions and expansions.]
+2.  [Finance: Analyzing bull and bear markets.]
+3.  [Energy: Detecting shifts in demand or production trends.]
+4.  [Weather: Capturing transitions between climatic states.]
 
 The most common type of regime switching model is the Markov Switching Model, where regime transitions follow a Markov process.
 
