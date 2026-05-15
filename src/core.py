@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from typing import Tuple, Dict, Any
+from typing import Any
 from statsmodels.tsa.regime_switching.markov_regression import MarkovRegression
 from scipy import stats
 import matplotlib.pyplot as plt
@@ -13,8 +13,8 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
-def generate_regime_data(n: int = 500, regime_probs: Tuple[float, float] = (0.7, 0.3),
-                         stds: Tuple[float, float] = (1, 5), seed: int = 42) -> pd.DataFrame:
+def generate_regime_data(n: int = 500, regime_probs: tuple[float, float] = (0.7, 0.3),
+                         stds: tuple[float, float] = (1, 5), seed: int = 42) -> pd.DataFrame:
     """Generate synthetic data with regime switching."""
     np.random.seed(seed)
     regimes = np.random.choice([0, 1], size=n, p=regime_probs)
@@ -44,7 +44,7 @@ def calculate_accuracy(df: pd.DataFrame) -> float:
     """Calculate prediction accuracy."""
     return (df['True_Regime'] == df['Predicted_Regime']).mean()
 
-def calculate_regime_statistics(df: pd.DataFrame) -> Dict[int, Dict[str, float]]:
+def calculate_regime_statistics(df: pd.DataFrame) -> dict[int, dict[str, float]]:
     """Calculate statistics for each regime."""
     stats_dict = {}
     for regime in [0, 1]:
@@ -57,7 +57,7 @@ def calculate_regime_statistics(df: pd.DataFrame) -> Dict[int, Dict[str, float]]
         }
     return stats_dict
 
-def calculate_regime_durations(df: pd.DataFrame) -> Dict[int, float]:
+def calculate_regime_durations(df: pd.DataFrame) -> dict[int, float]:
     """Calculate average duration in each regime."""
     durations = {}
     for regime in [0, 1]:
