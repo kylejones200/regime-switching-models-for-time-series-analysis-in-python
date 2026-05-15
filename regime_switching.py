@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 from statsmodels.tsa.regime_switching.markov_regression import MarkovRegression
 import seaborn as sns
 from scipy import stats
+np.random.seed(42)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 # Generate and prepare data
-np.random.seed(42)
 n = 500
 regimes = np.random.choice([0, 1], size=n, p=[0.7, 0.3])
 data = np.array(np.random.normal(0, np.where(regimes == 0, 1, 5)))

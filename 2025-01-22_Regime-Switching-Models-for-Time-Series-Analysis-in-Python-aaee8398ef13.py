@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+np.random.seed(42)
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -19,7 +20,6 @@ logging.basicConfig(
 
 
 # Generate and prepare data
-np.random.seed(42)
 n = 500
 regimes = np.random.choice([0, 1], size=n, p=[0.7, 0.3])
 data = np.array(np.random.normal(0, np.where(regimes == 0, 1, 5)))
