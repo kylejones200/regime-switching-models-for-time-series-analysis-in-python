@@ -42,7 +42,7 @@ def fit_markov_switching(
 def add_predictions(df: pd.DataFrame, result: Any) -> pd.DataFrame:
     """Add predicted probabilities and regimes to DataFrame."""
     df = df.copy()
-    df["Predicted_Prob_High"] = result.smoothed_marginal_probabilities[:, 1]
+    df["Predicted_Prob_Regime_1"] = result.smoothed_marginal_probabilities[:, 1]
     df["Predicted_Regime"] = np.argmax(result.smoothed_marginal_probabilities, axis=1)
     return df
 
