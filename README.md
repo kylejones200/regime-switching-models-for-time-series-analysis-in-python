@@ -30,3 +30,11 @@ Edit `config.yaml` to customize:
 - By default, the script generates synthetic data with two regimes.
 - The model uses Markov switching regression with switching variance.
 - Transition probabilities are estimated from the data.
+
+## Disclaimer
+
+Educational/demo code only. Not financial, safety, or engineering advice. Use at your own risk. Verify results independently before any production or operational use.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
