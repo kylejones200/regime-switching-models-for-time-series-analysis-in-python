@@ -18,6 +18,11 @@ from src.core import (
     calculate_regime_statistics,
     fit_markov_switching,
     generate_regime_data,
+    plot_confusion_matrix,
+    plot_density_distribution,
+    plot_regime_comparison,
+    plot_regime_data,
+    plot_transition_matrix,
 )
 
 logging.basicConfig(
