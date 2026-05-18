@@ -2,6 +2,12 @@
 
 This project demonstrates Markov switching regression models for identifying regime changes in time series data.
 
+## Business context
+
+Some time series do not follow a single pattern. Markets alternate between calm and chaotic. Economies cycle through expansion and recession. Energy demand shifts with seasons, policy changes, and structural shocks. A single model fitted across all of this history will fit none of it well.
+
+Regime switching models solve this by assuming the series operates in distinct states — regimes — each with its own statistical properties. The model learns when the data is in which state and estimates the probability of transitioning between them.
+
 ## Project Structure
 
 ```
