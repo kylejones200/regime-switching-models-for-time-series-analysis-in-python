@@ -30,7 +30,7 @@ logging.basicConfig(
 )
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path: Path | None = None) -> dict:
     """Load configuration from YAML file."""
     if config_path is None:
         config_path = Path(__file__).parent / "config.yaml"
@@ -46,7 +46,6 @@ def main():
         "--output-dir", type=Path, default=None, help="Output directory for plots"
     )
     args = parser.parse_args()
-
     config = load_config(args.config)
     output_dir = (
         Path(args.output_dir)
@@ -54,7 +53,6 @@ def main():
         else Path(config["output"]["figures_dir"])
     )
     output_dir.mkdir(exist_ok=True)
-
     logging.info("Generating regime switching data...")
     df = generate_regime_data(
         config["data"]["n_samples"],
@@ -62,23 +60,18 @@ def main():
         tuple(config["data"]["stds"]),
         config["data"]["seed"],
     )
-
     logging.info("Fitting Markov switching model...")
     result = fit_markov_switching(
         df["Data"].values,
         config["model"]["k_regimes"],
         config["model"]["switching_variance"],
     )
-
     logging.info(f"\n{result.summary()}")
     logging.info("Transition Matrix:")
     logging.info(f"\n{result.regime_transition}")
-
     df = add_predictions(df, result)
-
     accuracy = calculate_accuracy(df)
     logging.info(f"Prediction Accuracy: {accuracy:.2%}")
-
     regime_stats = calculate_regime_statistics(df)
     logging.info("Regime Statistics:")
     for regime, stats_dict in regime_stats.items():
@@ -98,7 +91,6 @@ def main():
     )
     logging.info("Transition Counts:")
     logging.info(f"\n{pd.crosstab(transitions['From'], transitions['To'])}")
-
     if config["analysis"]["run_all_plots"]:
         logging.info("Generating plots...")
         plot_regime_data(df, output_dir / "original_data_regimes.png")

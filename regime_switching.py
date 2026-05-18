@@ -2,7 +2,6 @@ import logging
 from pathlib import Path
 
 import pandas as pd
-
 from src.core import (
     add_predictions,
     calculate_accuracy,
@@ -31,7 +30,6 @@ def log_model_fit(result) -> None:
 def log_evaluation_metrics(df: pd.DataFrame) -> None:
     logging.info("\nModel Performance Metrics:")
     logging.info(f"Prediction Accuracy: {calculate_accuracy(df):.2%}")
-
     logging.info("\nRegime Statistics:")
     for regime, regime_stats in calculate_regime_statistics(df).items():
         logging.info(f"\nRegime {regime}:")
@@ -61,11 +59,9 @@ def save_analysis_plots(df: pd.DataFrame, result, output_dir: Path = Path(".")) 
 
 def main() -> None:
     configure_logging()
-
     df = generate_regime_data()
     result = fit_markov_switching(df["Data"].values)
     log_model_fit(result)
-
     df = add_predictions(df, result)
     save_analysis_plots(df, result)
     log_evaluation_metrics(df)

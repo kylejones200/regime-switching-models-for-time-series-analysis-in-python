@@ -58,7 +58,7 @@ def animate(frame):
                 for p in range(min(2, confusion_matrix.shape[1])):
                     temp_matrix[t, p] = confusion_matrix[t, p]
             confusion_matrix = temp_matrix
-        im = ax4.imshow(confusion_matrix, cmap="Blues", interpolation="nearest")
+        ax4.imshow(confusion_matrix, cmap="Blues", interpolation="nearest")
         for (j, i), label in np.ndenumerate(confusion_matrix):
             ax4.text(
                 i,
@@ -75,9 +75,7 @@ def animate(frame):
         ax4.set_title("Confusion Matrix")
         if result is not None:
             transition_matrix = result.regime_transition.reshape(2, 2)
-            im2 = ax5.imshow(
-                transition_matrix, cmap="coolwarm", interpolation="nearest"
-            )
+            ax5.imshow(transition_matrix, cmap="coolwarm", interpolation="nearest")
             for (j, i), label in np.ndenumerate(transition_matrix):
                 ax5.text(i, j, f"{label:.2f}", ha="center", va="center")
             ax5.set_title("Transition Probability Matrix")
@@ -101,7 +99,7 @@ def get_regime_predictions(data):
             return (pred_regimes, result)
         else:
             return (np.zeros(len(data)), None)
-    except:
+    except Exception:
         return (np.zeros(len(data)), None)
 
 
@@ -241,12 +239,12 @@ def your_existing_data_preparation_and_model_fitting() -> None:
     warnings.filterwarnings("ignore")
     fig = plt.figure(figsize=(20, 10))
     gs = fig.add_gridspec(2, 2)
-    ax1 = fig.add_subplot(gs[0, 0])
-    ax2 = fig.add_subplot(gs[0, 1])
-    ax3 = fig.add_subplot(gs[1, 0])
-    ax4 = fig.add_subplot(gs[1, 1])
+    fig.add_subplot(gs[0, 0])
+    fig.add_subplot(gs[0, 1])
+    fig.add_subplot(gs[1, 0])
+    fig.add_subplot(gs[1, 1])
     plt.close()
-    confusion_matrix = np.zeros((2, 2))
+    np.zeros((2, 2))
     step = 5
     frames = range(10, len(df), step)
     anim = FuncAnimation(fig, animate, frames=frames, interval=100, blit=False)
@@ -258,11 +256,11 @@ def your_existing_data_preparation_code_remains_the() -> None:
     warnings.filterwarnings("ignore")
     fig = plt.figure(figsize=(15, 10))
     gs = fig.add_gridspec(2, 3)
-    ax1 = fig.add_subplot(gs[0, 0])
-    ax2 = fig.add_subplot(gs[0, 1])
-    ax3 = fig.add_subplot(gs[0, 2])
-    ax4 = fig.add_subplot(gs[1, 0])
-    ax5 = fig.add_subplot(gs[1, 1])
+    fig.add_subplot(gs[0, 0])
+    fig.add_subplot(gs[0, 1])
+    fig.add_subplot(gs[0, 2])
+    fig.add_subplot(gs[1, 0])
+    fig.add_subplot(gs[1, 1])
     plt.close()
     step = 10
     frames = range(20, len(df), step)
